@@ -259,15 +259,18 @@ export ASDF_DIR=${HOME}/.asdf
 
 # PATH
 
-export DENO_INSTALL="/home/snitsky/.deno"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/usr/local/v
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.detaspace/bin
-export PATH=$PATH:$HOME/.asdf/bin:$HOME/.asdf/shims
-export PATH="$PATH:$DENO_INSTALL/bin"
+# export DENO_INSTALL="/home/snitsky/.deno"
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:/usr/local/v
+# export PATH=$PATH:$HOME/.local/bin
+# export PATH=$PATH:$HOME/.detaspace/bin
+# export PATH=$PATH:$HOME/.asdf/bin:$HOME/.asdf/shims
+# export PATH="$PATH:$DENO_INSTALL/bin"
 
+export FLYCTL_INSTALL="/home/ks/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+#
 # Aliases
 
 alias open='explorer.exe'
@@ -306,5 +309,15 @@ alias rt='rails test'
 alias ru='rails runner'
 alias rdfl='rails db:fixtures:load'
 alias lg='lazygit'
+alias hx='helix'
+alias pgstart='doas systemctl start postgresql'
 
 source ~/.zsh/modules/git-omz-like-module.zsh
+
+
+# bun completions
+[ -s "/home/ks/.bun/_bun" ] && source "/home/ks/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
