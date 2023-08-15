@@ -37,6 +37,7 @@ au CursorHold * checktime
 autocmd InsertEnter * norm zz
 autocmd BufWritePre * %s/\s\+$//e
 autocmd Filetype go setlocal noexpandtab
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 call plug#begin('~/.vim/plugged')
@@ -58,7 +59,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'lukas-reineke/indent-blankline.nvim'
-  " Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
@@ -187,10 +187,4 @@ lua << EOF
       additional_vim_regex_highlighting = false,
     },
   }
---
---  require('no-neck-pain').setup({
---    autocmds = {
---      enableOnVimEnter = true,
---    }
---  })
 EOF
