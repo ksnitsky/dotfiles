@@ -59,6 +59,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'rktjmp/lush.nvim'
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
@@ -187,4 +188,8 @@ lua << EOF
       additional_vim_regex_highlighting = false,
     },
   }
+  -- require('plugins/procolors');
 EOF
+
+" packadd lush.nvim
+" colorscheme procolors
