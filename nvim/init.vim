@@ -59,7 +59,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'rktjmp/lush.nvim'
+  " Plug 'rktjmp/lush.nvim'
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
@@ -176,9 +176,6 @@ lua << EOF
         node_decremental = "grm",
       },
     },
-    indent = {
-      enable = true
-    },
     highlight = {
       enable = true,
       -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -188,8 +185,4 @@ lua << EOF
       additional_vim_regex_highlighting = false,
     },
   }
-  -- require('plugins/procolors');
 EOF
-
-" packadd lush.nvim
-" colorscheme procolors
