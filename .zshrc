@@ -256,24 +256,20 @@ fi
 
 export EDITOR='nvim'
 export ASDF_DIR=${HOME}/.asdf
+export BROWSER_PATH=/usr/bin/brave-browser
 
 # PATH
 
-# export DENO_INSTALL="/home/snitsky/.deno"
-# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-# export PATH=$PATH:/usr/local/go/bin
-# export PATH=$PATH:/usr/local/v
-# export PATH=$PATH:$HOME/.local/bin
-# export PATH=$PATH:$HOME/.detaspace/bin
-# export PATH=$PATH:$HOME/.asdf/bin:$HOME/.asdf/shims
-# export PATH="$PATH:$DENO_INSTALL/bin"
+export PATH=$PATH:/usr/local/go/bin
 
-export FLYCTL_INSTALL="/home/ks/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-#
+# export PATH=$HOME/compiled/openssl/bin/:$PATH
+# export LD_LIBRARY_PATH=$HOME/compiled/openssl/lib
+# export LC_ALL="en_US.UTF-8"
+# export LDFLAGS="-L /home/ks/compiled/openssl/lib -WL,-rpath,/home/ks/compiled/openssl/lib"
+
 # Aliases
 
-alias open='explorer.exe'
+# alias open='explorer.exe'
 alias rc='rails console'
 alias rcs='rails console --sandbox'
 alias rd='rails destroy'
@@ -310,7 +306,7 @@ alias ru='rails runner'
 alias rdfl='rails db:fixtures:load'
 alias lg='lazygit'
 alias hx='helix'
-alias pgstart='doas systemctl start postgresql'
+alias pgstart='doas systemctl start postgresql-15'
 
 source ~/.zsh/modules/git-omz-like-module.zsh
 
