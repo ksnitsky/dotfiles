@@ -148,6 +148,8 @@ let g:startify_lists = [
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 let g:oscyank_term = 'default'
+let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+     execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " Lua config
 lua << EOF
