@@ -257,6 +257,7 @@ fi
 export EDITOR='nvim'
 export ASDF_DIR=${HOME}/.asdf
 export BROWSER_PATH=/usr/bin/brave-browser
+export MOZ_ENABLE_WAYLAND=1
 
 # PATH
 
