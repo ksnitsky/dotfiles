@@ -54,6 +54,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'rcarriga/nvim-notify'
   Plug 'windwp/nvim-autopairs'
+  " Plug 'junegunn/goyo.vim'
+  Plug 'vimwiki/vimwiki'
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
@@ -85,7 +87,7 @@ nnoremap <silent> <leader>p <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>T <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>f <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <silent> <leader>t :tabnew<Cr>
-nnoremap <silent> <leader>w :bdelete<Cr>
+nnoremap <silent> <leader>q :bdelete<Cr>
 nnoremap <silent> <leader>j :Lexplore<Cr>
 nnoremap <silent> <leader>; :Prettier<Cr>
 nnoremap <c-k> <c-v>

@@ -262,6 +262,7 @@ export MOZ_ENABLE_WAYLAND=1
 # PATH
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # export PATH=$HOME/compiled/openssl/bin/:$PATH
 # export LD_LIBRARY_PATH=$HOME/compiled/openssl/lib
@@ -321,3 +322,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # opam configuration
 [[ ! -r /home/ks/.opam/opam-init/init.zsh ]] || source /home/ks/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# export LANG=C
