@@ -263,6 +263,7 @@ export MOZ_ENABLE_WAYLAND=1
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/go/bin
 
 # export PATH=$HOME/compiled/openssl/bin/:$PATH
 # export LD_LIBRARY_PATH=$HOME/compiled/openssl/lib
