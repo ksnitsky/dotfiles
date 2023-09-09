@@ -72,6 +72,12 @@ input "type:keyboard" {
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+
+#
+# Window specific settings
+#
+for_window [app_id="org.telegram.desktop"] floating enable
+
 ### Key bindings
 #
 # Basics:
@@ -237,5 +243,6 @@ default_floating_border none
 font pango:monospace 0
 titlebar_padding 1
 titlebar_border_thickness 0
+
 
 include /etc/sway/config.d/*
