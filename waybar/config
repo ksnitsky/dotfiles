@@ -88,7 +88,7 @@
         "format-icons": ["", "", ""]
     },
     "custom/gpu": {
-      "exec": "./gpu.sh /sys/class/hwmon/hwmon1",
+      "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
       "format": "{} 󰢮",
       "return-type": "",
       "interval": 1
