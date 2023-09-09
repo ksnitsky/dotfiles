@@ -54,8 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'rcarriga/nvim-notify'
   Plug 'windwp/nvim-autopairs'
-  " Plug 'junegunn/goyo.vim'
-  Plug 'vimwiki/vimwiki'
+  Plug '0x00-ketsu/markdown-preview.nvim'
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
@@ -204,4 +203,6 @@ lua << EOF
   require('nvim-autopairs').setup {
     map_cr = false,
   }
+
+  require('markdown-preview').setup {}
 EOF
