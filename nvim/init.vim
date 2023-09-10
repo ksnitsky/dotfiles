@@ -82,7 +82,8 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 " maps
 nmap Q <Nop>
-nnoremap <silent> <leader>g <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader>g <cmd>Telescope git_files<cr>
+nnoremap <silent> <leader>G <cmd>Telescope find_files<cr>
 nnoremap <silent> <leader>p <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>T <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>f <cmd>Telescope current_buffer_fuzzy_find<cr>
@@ -91,6 +92,7 @@ nnoremap <silent> <leader>q :bdelete<Cr>
 nnoremap <silent> <leader>j :Lexplore<Cr>
 nnoremap <silent> <leader>; :Prettier<Cr>
 nnoremap <c-k> <c-v>
+nnoremap <leader>sr :%s/<C-R><C-W>/
 
 " coc.config
 inoremap <silent><expr> <TAB>
