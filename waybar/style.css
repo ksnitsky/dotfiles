@@ -1,0 +1,104 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Ubuntu Nerd Font";
+  font-size: 13px;
+  min-height: 0;
+  font-weight: bold;
+}
+
+window#waybar {
+  background: rgba(43, 48, 59, 0.35);
+  color: white;
+}
+
+#window {
+  font-weight: bold;
+  font-family: "Ubuntu";
+}
+/*
+#workspaces {
+    padding: 0 5px;
+}
+*/
+
+#workspaces button {
+  padding: 0 5px;
+  background: transparent;
+  color: white;
+  border-top: 2px solid transparent;
+}
+
+#workspaces button.focused {
+  color: #c9545d;
+  border-top: 2px solid #c9545d;
+}
+
+#mode {
+  background: #64727D;
+  border-bottom: 3px solid white;
+}
+
+/* #clock, */
+#cpu,
+#temperature,
+#memory,
+#custom-gpu,
+#network,
+/* #pulseaudio, */
+#custom-spotify,
+#tray,
+#custom-wireguard,
+#language,
+#custom-powermenu {
+  padding: 0 3px;
+  margin: 0 2px;
+  /* background: lightblue; */
+}
+
+#custom-gpu {
+  /* background: blue; */
+}
+
+#custom-powermenu {
+  /* background: red; */
+  padding: 0 3px 0 1px;
+}
+
+#clock {
+}
+
+#language {
+  background-color: rgba(110, 110, 110, 0.7);
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#network {
+}
+
+#network.disconnected {
+  background: #f53c3c;
+}
+
+#pulseaudio {
+  font-size: 14px;
+  padding: 0 3px 0 1px;
+}
+
+#pulseaudio.muted {
+  padding: 0 3px 0 1px;
+}

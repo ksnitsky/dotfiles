@@ -9,15 +9,13 @@
     "modules-center": ["clock"],
     "modules-right": [
       // "idle_inhibitor",
+      "sway/language",
       "tray",
       "custom/wireguard",
-      // "network",
       "memory",
       "temperature",
       "cpu",
       "custom/gpu",
-      // "keyboard-state",
-      "sway/language",
       "pulseaudio",
       "custom/powermenu"
     ],
@@ -36,15 +34,6 @@
     //         "urgent": "",
     //         "focused": "",
     //         "default": ""
-    //     }
-    // },
-    // "keyboard-state": {
-    //     "numlock": true,
-    //     "capslock": true,
-    //     "format": "{name} {icon}",
-    //     "format-icons": {
-    //         "locked": "",
-    //         "unlocked": ""
     //     }
     // },
     "sway/mode": {
@@ -74,58 +63,56 @@
         "format-alt": "{:%d-%m-%y}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}%  ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}%  "
     },
     "temperature": {
         // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{temperatureC}°C",
+        // "format-icons": ["", "", ""]
     },
+    // "custom/cpu": {
+    //   "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
+    //   "format": " {}  ",
+    //   "return-type": "",
+    //   "tooltip": false,
+    //   "interval": 1
+    // },
     "custom/gpu": {
       "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
-      "format": "{} 󰢮",
+      "format": " {} 󰢮 ",
       "return-type": "",
       "tooltip": false,
       "interval": 1
     },
     "custom/wireguard": {
-      "exec": "ip route | grep -q 'fedora-pc' && echo 'connected' || echo 'disconnected'",
+      "exec": "~/.config/waybar/wg-status.sh fedora-pc",
       "format": "{}",
-      "return-type": "",
+      "return-type": "json",
       // wg-quick should run as root. probably need to add previlegies
       // "on-click": "~/.config/waybar/wg-status.sh 'fedora-pc'",
       "interval": 10
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        // "format": "{volume}% {icon} {format_source}",
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{icon}",
+        "format-muted": "  ",
+        // "format-source": "{volume}% ",
+        // "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "default": ["  ", "  ", "  "]
         },
         "on-click": "pavucontrol"
     },
     "custom/powermenu": {
       "on-click": "~/.config/waybar/powermenu.sh",
-      "format": "   ",
+      "format": "  ",
       "return-type": "",
       "tooltip": false,
       "interval": 1
