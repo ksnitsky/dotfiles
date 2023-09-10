@@ -8,9 +8,7 @@ fi
 interface="$1"
 
 if ip route | grep -q "dev $interface"; then
-    # If WireGuard is connected, disconnect it
-    wg-quick down "$interface"
+    echo "{\"text\":\" 󰕥 \", \"tooltip\":\"$interface connected\"}"
 else
-    # If WireGuard is disconnected, connect it
-    wg-quick up "$interface"
+    echo "{\"text\":\" 󰦞 \", \"tooltip\":\"$interface not connected\"}"
 fi
