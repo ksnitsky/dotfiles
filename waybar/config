@@ -18,7 +18,8 @@
       "custom/gpu",
       // "keyboard-state",
       "sway/language",
-      "pulseaudio"
+      "pulseaudio",
+      "custom/powermenu"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -70,7 +71,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%d-%m-%y}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -102,15 +103,6 @@
       // "on-click": "~/.config/waybar/wg-status.sh 'fedora-pc'",
       "interval": 10
     },
-    // "network": {
-    //     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    //     "format-wifi": "{essid} ({signalStrength}%) ",
-    //     "format-ethernet": "{ipaddr}/{cidr} ",
-    //     "tooltip-format": "{ifname} via {gwaddr} ",
-    //     "format-linked": "{ifname} (No IP) ",
-    //     "format-disconnected": "Disconnected ⚠",
-    //     "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    // },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         // "format": "{volume}% {icon} {format_source}",
@@ -131,16 +123,11 @@
         },
         "on-click": "pavucontrol"
     },
-    // "custom/media": {
-    //     "format": "{icon} {}",
-    //     "return-type": "json",
-    //     "max-length": 40,
-    //     "format-icons": {
-    //         "spotify": "",
-    //         "default": "🎜"
-    //     },
-    //     "escape": true,
-    //     "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    //     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    // }
+    "custom/powermenu": {
+      "on-click": "~/.config/waybar/powermenu.sh",
+      "format": "   ",
+      "return-type": "",
+      "tooltip": false,
+      "interval": 1
+    }
 }
