@@ -9,6 +9,7 @@
     "modules-center": ["clock"],
     "modules-right": [
       // "idle_inhibitor",
+      "custom/screenshare",
       "sway/language",
       "tray",
       "custom/wireguard",
@@ -98,6 +99,11 @@
       // wg-quick should run as root. probably need to add previlegies
       // "on-click": "~/.config/waybar/wg-status.sh 'fedora-pc'",
       "interval": 10
+    },
+    "custom/screenshare": {
+      "exec": "pw-dump | jq -r 'map(.info?.props?) | map(select(.[\"media.name\"]? | test(\"webrtc-*\")?)) | map(.[\"stream.is-live\"]? == true | \"Live\") | .[]?'",
+      "format": "{}",
+      "interval": 3
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
