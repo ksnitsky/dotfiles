@@ -76,23 +76,30 @@ input "type:keyboard" {
 #
 # Window specific settings
 #
-# For some reason this rules doesn't work at all
-#
-for_window [app_id=org.telegram.desktop] floating enable
+for_window {
+  [app_id=org.telegram.desktop] floating enable
 
-# # https://github.com/ValveSoftware/steam-for-linux/issues/1040
-for_window [class="^steam$" title="^Friends$"] floating enable
-for_window [class="^steam$" title="Steam - News"] floating enable
-for_window [class="^steam$" title=".* - Chat"] floating enable
-for_window [class="^steam$" title="^Settings$"] floating enable
-for_window [class="^steam$" title=".* - event started"] floating enable
-for_window [class="^steam$" title=".* CD key"] floating enable
-for_window [class="^steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="^steam$" title="^Screenshot Uploader$"] floating enable
-for_window [class="^steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
-for_window [title="^steam Keyboard$"] floating enable
-for_window [class="^dota2$"] floating enable
-for_window [class="^dota2$"] floating enable nofocus
+  # [shell="xwayland"] title_format "%title [XWayland]"
+
+  [window_role="pop-up"] floating enable
+  [window_role="bubble"] floating enable
+  [window_role="dialog"] floating enable
+  [window_type="dialog"] floating enable
+
+  # https://github.com/ValveSoftware/steam-for-linux/issues/1040
+  [class="^steam$"] floating enable
+  # [class="^steam$" title="Steam - News"] floating enable
+  # [class="^steam$" title=".* - Chat"] floating enable
+  # [class="^steam$" title="^Settings$"] floating enable
+  # [class="^steam$" title=".* - event started"] floating enable
+  # [class="^steam$" title=".* CD key"] floating enable
+  # [class="^steam$" title="^Steam - Self Updater$"] floating enable
+  # [class="^steam$" title="^Screenshot Uploader$"] floating enable
+  # [class="^steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+  [title="^steam Keyboard$"] floating enable
+  [class="^dota2$"] floating enable
+  # [class="^dota2$"] floating enable nofocus
+}
 
 ### Key bindings
 #
@@ -118,7 +125,9 @@ for_window [class="^dota2$"] floating enable nofocus
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'End session?' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'End session?' -B 'Yes, exit sway' 'swaymsg exit'
+    # TODO: https://sr.ht/~emersion/grim/ make a wofi select for a mode
+    bindsym $mod+Shift+e exec grim -g "$(slurp)" - | wl-copy
 #
 # Moving around:
 #
@@ -197,7 +206,7 @@ for_window [class="^dota2$"] floating enable nofocus
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    # bindsym $mod+z focus mode_toggle
+    bindsym $mod+z focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
