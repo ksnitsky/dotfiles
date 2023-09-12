@@ -81,10 +81,10 @@ for_window {
 
   # [shell="xwayland"] title_format "%title [XWayland]"
 
-  [window_role="pop-up"] floating enable
-  [window_role="bubble"] floating enable
-  [window_role="dialog"] floating enable
-  [window_type="dialog"] floating enable
+  # [window_role="pop-up"] floating enable
+  # [window_role="bubble"] floating enable
+  # [window_role="dialog"] floating enable
+  # [window_type="dialog"] floating enable
 
   # https://github.com/ValveSoftware/steam-for-linux/issues/1040
   [class="^steam$"] floating enable
@@ -127,7 +127,7 @@ for_window {
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'End session?' -B 'Yes, exit sway' 'swaymsg exit'
     # TODO: https://sr.ht/~emersion/grim/ make a wofi select for a mode
-    bindsym $mod+Shift+e exec grim -g "$(slurp)" - | wl-copy
+    bindsym $mod+Shift+e exec grim -g "$(slurp)" - | wl-copy && play /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
 #
 # Moving around:
 #
@@ -156,8 +156,13 @@ for_window {
     # Media keys
     bindsym XF86AudioPlay exec playerctl play-pause
     bindsym XF86AudioMute exec amixer -q set Master toggle
-    bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
-    bindsym XF86AudioLowerVolume exec amixer set Master 10%-
+
+    # TODO: move this lines into .sh
+    bindsym XF86AudioRaiseVolume exec dunstify -h int:value:"$(amixer set Master 10%+ | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)" "Volume"
+    bindsym XF86AudioLowerVolume exec dunstify -h int:value:"$(amixer set Master 10%- | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)" "Volume"
+
+    # bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
+    # bindsym XF86AudioLowerVolume exec amixer set Master 10%-
 #
 # Workspaces:
 #
