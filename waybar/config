@@ -47,6 +47,9 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+    "sway/window": {
+      "max-length": 100
+    },
     // "idle_inhibitor": {
     //     "format": "{icon}",
     //     "format-icons": {
