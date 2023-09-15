@@ -18,7 +18,8 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show=drun
+# set $menu wofi --show=drun --term=$term
+set $menu tofi-drun | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -133,7 +134,8 @@ for_window {
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'End session?' -B 'Yes, exit sway' 'swaymsg exit'
     # TODO: https://sr.ht/~emersion/grim/ make a wofi select for a mode
-    bindsym $mod+Shift+e exec grim -g "$(slurp)" - | wl-copy && play /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
+    # bindsym $mod+Shift+e exec grim -g "$(slurp)" - | wl-copy && play /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
+    bindsym $mod+Shift+e exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG && play /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
 #
 # Moving around:
 #
@@ -161,14 +163,17 @@ for_window {
 
     # Media keys
     bindsym XF86AudioPlay exec playerctl play-pause
-    bindsym XF86AudioMute exec amixer -q set Master toggle
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioMute exec changevolume mute
 
-    # TODO: move this lines into .sh
-    bindsym XF86AudioRaiseVolume exec dunstify -h int:value:"$(amixer set Master 10%+ | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)" "Volume"
-    bindsym XF86AudioLowerVolume exec dunstify -h int:value:"$(amixer set Master 10%- | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)" "Volume"
+    # bindsym XF86AudioRaiseVolume exec dunstify -h int:value:"$(pamixer -i 10 --get-volume)" "Volume"
+    # bindsym XF86AudioLowerVolume exec dunstify -h int:value:"$(pamixer -d 10 --get-volume)" "Volume"
+    # bindsym XF86AudioRaiseVolume exec ~/.local/bin/changevolume up
+    # bindsym XF86AudioLowerVolume exec ~/.local/bin/changevolume down
+    bindsym XF86AudioRaiseVolume exec changevolume up
+    bindsym XF86AudioLowerVolume exec changevolume down
 
-    # bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
-    # bindsym XF86AudioLowerVolume exec amixer set Master 10%-
 #
 # Workspaces:
 #
