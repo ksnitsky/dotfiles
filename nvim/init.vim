@@ -51,15 +51,21 @@ call plug#begin('~/.vim/plugged')
   Plug 'kdheepak/lazygit.nvim'
   Plug 'vim-ruby/vim-ruby'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  " Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'rcarriga/nvim-notify'
   Plug 'windwp/nvim-autopairs'
   Plug '0x00-ketsu/markdown-preview.nvim'
+  " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'norcalli/nvim-colorizer.lua'
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+  Plug 'ray-x/go.nvim'
+  Plug 'ray-x/guihua.lua'
 
   " colorscheme
   Plug 'dotsilas/darcubox-nvim'
@@ -154,16 +160,17 @@ let g:startify_lists = [
 let g:oscyank_term = 'default'
 let g:opamshare = substitute(system('opam var share'),'\n$','','''')
      execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:go_auto_type_info = 1
 
 " Lua config
 lua << EOF
   local actions = require("telescope.actions")
   vim.notify = require('notify')
-  require('notify').setup({
+  require('notify').setup {
     background_colour = "#000000";
-  })
+  }
 
-  require("telescope").setup({
+  require("telescope").setup {
       defaults = {
           mappings = {
               i = {
@@ -180,7 +187,7 @@ lua << EOF
           case_mode = "smart_case",
         }
       }
-  })
+  }
   require('telescope').load_extension('fzf')
 
   require('nvim-treesitter.configs').setup {
@@ -208,4 +215,30 @@ lua << EOF
   }
 
   require('markdown-preview').setup {}
+
+--  require'treesitter-context'.setup {
+--    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+--    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+--    min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+--    line_numbers = true,
+--    multiline_threshold = 20, -- Maximum number of lines to show for a single context
+--    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+--    mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+--    -- Separator between context and content. Should be a single character string, like '-'.
+--    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+--    separator = nil,
+--    zindex = 20, -- The Z-index of the context window
+--    on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+--  }
+
+  local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+     require('go.format').goimport()
+    end,
+    group = format_sync_grp,
+  })
+  require('go').setup()
+  require('colorizer').setup()
 EOF
