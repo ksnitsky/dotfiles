@@ -66,6 +66,11 @@ window#waybar {
   padding: 0 3px 0 1px;
 }
 
+#custom-notification {
+  padding: 0 3px 0 1px;
+  font-family: "NotoSansMono Nerd Font";
+}
+
 #clock {
 }
 

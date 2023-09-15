@@ -1,129 +1,150 @@
 {
-    "layer": "top", // Waybar at top layer
-    // "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 3, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "sway/scratchpad"],
-    "modules-center": ["clock"],
-    "modules-right": [
-      // "idle_inhibitor",
-      "custom/screenshare",
-      "sway/language",
-      "tray",
-      "custom/wireguard",
-      "memory",
-      "temperature",
-      "cpu",
-      "custom/gpu",
-      "pulseaudio",
-      "custom/powermenu"
-    ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "sway/window": {
-      "max-length": 100
-    },
-    // "idle_inhibitor": {
-    //     "format": "{icon}",
-    //     "format-icons": {
-    //         "activated": "",
-    //         "deactivated": ""
-    //     }
-    // },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 15
-    },
-    "clock": {
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-      "format": "{:%a, %b %d, %R}",
-      "locale": "C"
-    },
-    "cpu": {
-        "format": "{usage}%  ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}%  "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C",
-        // "format-icons": ["", "", ""]
-    },
-    // "custom/cpu": {
-    //   "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
-    //   "format": " {}  ",
-    //   "return-type": "",
-    //   "tooltip": false,
-    //   "interval": 1
-    // },
-    "custom/gpu": {
-      "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
-      "format": " {} 󰢮 ",
-      "return-type": "",
-      "tooltip": false,
-      "interval": 1
-    },
-    "custom/wireguard": {
-      "exec": "~/.config/waybar/wg-status.sh fedora-pc",
-      "format": "{}",
-      "return-type": "json",
-      // wg-quick should run as root. probably need to add previlegies
-      // "on-click": "~/.config/waybar/wg-status.sh 'fedora-pc'",
-      "interval": 10
-    },
-    "custom/screenshare": {
-      "exec": "pw-dump | jq -r 'map(.info?.props?) | map(select(.[\"media.name\"]? | test(\"webrtc-*\")?)) | map(.[\"stream.is-live\"]? == true | \"Live\") | .[]?'",
-      "format": "{}",
-      "interval": 3
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon}",
-        "format-muted": "  ",
-        // "format-source": "{volume}% ",
-        // "format-source-muted": "",
-        "format-icons": {
-            "default": ["  ", "  ", "  "]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/powermenu": {
-      "on-click": "~/.config/waybar/powermenu.sh",
-      "format": "  ",
-      "return-type": "",
-      "tooltip": false,
-      "interval": 1
-    }
+  "layer": "top", // Waybar at top layer
+  // "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 30, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 3, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "sway/scratchpad"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    // "idle_inhibitor",
+    "custom/screenshare",
+    "sway/language",
+    "tray",
+    "custom/wireguard",
+    "memory",
+    "temperature",
+    "cpu",
+    "custom/gpu",
+    "pulseaudio",
+    "custom/notification",
+    "custom/powermenu"
+  ],
+  // Modules configuration
+  // "sway/workspaces": {
+  //     "disable-scroll": true,
+  //     "all-outputs": true,
+  //     "warp-on-scroll": false,
+  //     "format": "{name}: {icon}",
+  //     "format-icons": {
+  //         "1": "",
+  //         "2": "",
+  //         "3": "",
+  //         "4": "",
+  //         "5": "",
+  //         "urgent": "",
+  //         "focused": "",
+  //         "default": ""
+  //     }
+  // },
+  "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+  },
+  "sway/scratchpad": {
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": ["", ""],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
+  },
+  "sway/window": {
+    "max-length": 100
+  },
+  // "idle_inhibitor": {
+  //     "format": "{icon}",
+  //     "format-icons": {
+  //         "activated": "",
+  //         "deactivated": ""
+  //     }
+  // },
+  "tray": {
+      // "icon-size": 21,
+      "spacing": 15
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%a, %b %d, %R}",
+    "locale": "C"
+  },
+  "cpu": {
+      "format": "{usage}%  ",
+      "tooltip": false
+  },
+  "memory": {
+      "format": "{}%  "
+  },
+  "temperature": {
+      // "thermal-zone": 2,
+      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C {icon}",
+      "format": "{temperatureC}°C",
+      // "format-icons": ["", "", ""]
+  },
+  // "custom/cpu": {
+  //   "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
+  //   "format": " {}  ",
+  //   "return-type": "",
+  //   "tooltip": false,
+  //   "interval": 1
+  // },
+  "custom/gpu": {
+    "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
+    "format": " {} 󰢮 ",
+    "return-type": "",
+    "tooltip": false,
+    "interval": 1
+  },
+  "custom/wireguard": {
+    "exec": "~/.config/waybar/wg-status.sh fedora-pc",
+    "format": "{}",
+    "return-type": "json",
+    // wg-quick should run as root. probably need to add previlegies
+    // "on-click": "~/.config/waybar/wg-status.sh 'fedora-pc'",
+    "interval": 10
+  },
+  "custom/screenshare": {
+    "exec": "pw-dump | jq -r 'map(.info?.props?) | map(select(.[\"media.name\"]? | test(\"webrtc-*\")?)) | map(.[\"stream.is-live\"]? == true | \"Live\") | .[]?'",
+    "format": "{}",
+    "interval": 3
+  },
+  "pulseaudio": {
+      // "scroll-step": 1, // %, can be a float
+      "format": "{icon}",
+      "format-muted": "  ",
+      // "format-source": "{volume}% ",
+      // "format-source-muted": "",
+      "format-icons": {
+          "default": ["  ", "  ", "  "]
+      },
+      "on-click": "pavucontrol"
+  },
+  // "custom/notification": {
+  //   "tooltip": false,
+  //   "format": "{icon}",
+  //   "format-icons": {
+  //     "notification": "<span foreground='red'><sup></sup></span>",
+  //     "none": "",
+  //     "dnd-notification": "<span foreground='red'><sup></sup></span>",
+  //     "dnd-none": "",
+  //     "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+  //     "inhibited-none": "",
+  //     "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+  //     "dnd-inhibited-none": ""
+  //   },
+  //   "return-type": "json",
+  //   "exec-if": "which swaync-client",
+  //   "exec": "swaync-client -swb",
+  //   "on-click": "swaync-client -t -sw",
+  //   "on-click-right": "swaync-client -d -sw",
+  //   "escape": true
+  // },
+  "custom/powermenu": {
+    "on-click": "~/.config/waybar/powermenu.sh",
+    "format": "  ",
+    "return-type": "",
+    "tooltip": false,
+    "interval": 1
+  }
 }
