@@ -324,3 +324,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # opam configuration
 [[ ! -r /home/ks/.opam/opam-init/init.zsh ]] || source /home/ks/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 # export LANG=C
+
+# if [[ ! $TERM =~ screen ]]; then
+#     exec tmux
+# fi

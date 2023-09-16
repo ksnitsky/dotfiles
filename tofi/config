@@ -13,4 +13,4 @@ result-spacing = 25
 num-results = 5
 font = monospace
 background-color = #000A
-terminal=kitty
+terminal = kitty
