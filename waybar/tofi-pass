@@ -1,0 +1,5 @@
+#!/bin/bash
+
+password=$(echo | tofi --hide-input=true --require-match=false --hidden-character='*')
+
+echo "$password" | sudo -S ls

@@ -101,7 +101,7 @@
     "format": "{}",
     "return-type": "json",
     // wg-quick should run as root. probably need to add previlegies
-    // "on-click": "~/.config/waybar/wg-status.sh 'fedora-pc'",
+    // "on-click": "~/.config/waybar/wg-toggle fedora-pc",
     "interval": 10
   },
   "custom/screenshare": {
