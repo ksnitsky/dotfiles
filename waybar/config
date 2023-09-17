@@ -1,9 +1,10 @@
 {
   "layer": "top", // Waybar at top layer
-  // "position": "top", // Waybar position (top|bottom|left|right)
+  "position": "top", // Waybar position (top|bottom|left|right)
   "height": 30, // Waybar height (to be removed for auto height)
+  "exclusive": true,
   // "width": 1280, // Waybar width
-  "spacing": 3, // Gaps between modules (4px)
+  // "spacing": 3, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "sway/scratchpad"],
   "modules-center": ["clock"],
@@ -49,7 +50,7 @@
       "tooltip-format": "{app}: {title}"
   },
   "sway/window": {
-    "max-length": 100
+    "max-length": 90
   },
   // "idle_inhibitor": {
   //     "format": "{icon}",
@@ -91,7 +92,7 @@
   // },
   "custom/gpu": {
     "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
-    "format": " {} 󰢮 ",
+    "format": "{} 󰢮 ",
     "return-type": "",
     "tooltip": false,
     "interval": 1
