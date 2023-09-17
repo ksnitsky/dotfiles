@@ -105,15 +105,19 @@ tooltip {
   border: 1px solid @overlay;
 }
 
+#custom-wireguard {
+  border-radius: 10px 0 0 10px;
+}
+
 #custom-gpu {
-  margin-right: 15px;
+  margin-right: 10px;
   border-radius: 0px 10px 10px 0px;
 }
 
-#custom-notification {
-  padding: 0 3px 0 1px;
-  font-family: "NotoSansMono Nerd Font";
-}
+/* #custom-notification { */
+/*   padding: 0 3px 0 1px; */
+/*   font-family: "NotoSansMono Nerd Font"; */
+/* } */
 
 #clock {
   color: @gold;
@@ -127,14 +131,15 @@ tooltip {
 #language {
   background-color: @text;
   border-color: @text;
-  padding: 0 5px;
+  padding: 0 3px;
   border-radius: 5px;
   color: @base;
   margin-right: 10px;
 }
 
 #tray {
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
 #cpu {
