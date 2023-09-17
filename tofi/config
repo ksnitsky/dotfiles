@@ -1,8 +1,3 @@
-# Some colors
-#
-# pink-red #F92672
-#
-# fullscreen
 width = 100%
 height = 100%
 border-width = 0
@@ -13,4 +8,6 @@ result-spacing = 25
 num-results = 5
 font = monospace
 background-color = #000A
+text-color = #e0def4
+selection-color = #eb6f92
 terminal = kitty
