@@ -27,7 +27,6 @@ zmodule duration-info
 zmodule git-info
 zmodule prompt-pwd
 # A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
-# zmodule asciiship
 zmodule gitster
 
 #
