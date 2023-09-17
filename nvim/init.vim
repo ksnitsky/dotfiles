@@ -62,7 +62,8 @@ call plug#begin('~/.vim/plugged')
 
   " lsp-config
   Plug 'neovim/nvim-lspconfig'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  Plug 'williamboman/mason.nvim'
+  " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
   Plug 'ray-x/go.nvim'
   Plug 'ray-x/guihua.lua'
@@ -83,8 +84,8 @@ au CursorHold * checktime
 autocmd InsertEnter * norm zz
 autocmd BufWritePre * %s/\s\+$//e
 autocmd Filetype go setlocal noexpandtab
-autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+" autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+" command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 " maps
 nmap Q <Nop>
@@ -101,29 +102,29 @@ nnoremap <c-k> <c-v>
 nnoremap <leader>sr :%s/<C-R><C-W>/
 
 " coc.config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#pum#next(1) :
+"       \ CheckBackspace() ? "\<Tab>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" function! CheckBackspace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! CheckBackspace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" else
+"   inoremap <silent><expr> <c-@> coc#refresh()
+" endif
 
 " end coc.config
 
@@ -241,4 +242,5 @@ lua << EOF
   })
   require('go').setup()
   require('colorizer').setup()
+  require("mason").setup()
 EOF
