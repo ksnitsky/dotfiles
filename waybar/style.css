@@ -70,8 +70,8 @@ tooltip {
 
 #mode {
   margin-left: 10px;
-/*   background: #64727D; */
-/*   border-bottom: 3px solid white; */
+  /*   background: #64727D; */
+  /*   border-bottom: 3px solid white; */
 }
 
 #workspaces {
@@ -95,6 +95,7 @@ tooltip {
 #custom-spotify,
 #tray,
 #custom-wireguard,
+#custom-screenshare,
 #language,
 #custom-powermenu {
   background: @base;
@@ -103,6 +104,12 @@ tooltip {
   margin: 3px 0px;
   margin-top: 3px;
   border: 1px solid @overlay;
+}
+
+#custom-screenshare {
+  margin-right: 10px;
+  border-radius: 10px;
+  color: @love;
 }
 
 #custom-wireguard {
@@ -124,7 +131,8 @@ tooltip {
   border-radius: 10px;
 }
 
-#window {
+#window,
+#scratchpad {
   margin-left: 10px;
 }
 
