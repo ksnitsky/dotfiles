@@ -1,5 +1,20 @@
 #!/bin/bash
 
-password=$(echo | tofi --hide-input=true --require-match=false --hidden-character='*')
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <interface_name>"
+    exit 1
+fi
 
-echo "$password" | sudo -S ls
+# echo "$password" || sudo -S wg-quick down fedora-pc
+password=$(echo | tofi --hide-input=true --require-match=false --hidden-character='*' --prompt-text='password: ')
+
+interface="$1"
+ 
+if ip route | grep -q "dev $interface"; then
+  sudo -S wg-quick down fedora-pc <<< "$password"
+else
+  sudo -S wg-quick up fedora-pc <<< "$password"
+fi
+
+sleep 2
+pkill -RTMIN+8 waybar

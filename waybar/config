@@ -6,7 +6,12 @@
   // "width": 1280, // Waybar width
   // "spacing": 3, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["sway/workspaces", "sway/window", "sway/mode", "sway/scratchpad"],
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window",
+    "sway/mode",
+    "sway/scratchpad"
+  ],
   "modules-center": ["clock"],
   "modules-right": [
     // "idle_inhibitor",
@@ -40,14 +45,14 @@
   //     }
   // },
   "sway/mode": {
-      "format": "<span style=\"italic\">{}</span>"
+    "format": "<span style=\"italic\">{}</span>"
   },
   "sway/scratchpad": {
-      "format": "{icon} {count}",
-      "show-empty": false,
-      "format-icons": ["", ""],
-      "tooltip": true,
-      "tooltip-format": "{app}: {title}"
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
   },
   "sway/window": {
     "max-length": 90
@@ -60,28 +65,29 @@
   //     }
   // },
   "tray": {
-      // "icon-size": 21,
-      "spacing": 15
+    // "icon-size": 21,
+    "spacing": 15
   },
   "clock": {
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    // "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "format": "{:%a, %b %d, %R}",
     "locale": "C"
   },
   "cpu": {
-      "format": "{usage}%  ",
-      "tooltip": false
+    "format": "{usage}%  ",
+    "tooltip": false
   },
   "memory": {
-      "format": "{}%  "
+    "format": "{}%  "
   },
   "temperature": {
-      // "thermal-zone": 2,
-      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      "critical-threshold": 80,
-      // "format-critical": "{temperatureC}°C {icon}",
-      "format": "{temperatureC}°C",
-      // "format-icons": ["", "", ""]
+    // "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}°C"
+    // "format-icons": ["", "", ""]
   },
   // "custom/cpu": {
   //   "exec": "~/.config/waybar/gpu.sh /sys/class/hwmon/hwmon1",
@@ -99,11 +105,16 @@
   },
   "custom/wireguard": {
     "exec": "~/.config/waybar/wg-status.sh fedora-pc",
-    "format": "{}",
+    // "exec-on-event": "on-click",
+    "format": "{icon}",
     "return-type": "json",
-    // wg-quick should run as root. probably need to add previlegies
-    // "on-click": "~/.config/waybar/wg-toggle fedora-pc",
-    "interval": 10
+    "signal": 8,
+    "on-click": "~/.config/waybar/tofi-pass fedora-pc",
+    "interval": "once",
+    "format-icons": {
+      "connected": "󰕥",
+      "disconnected": "󰦞"
+    }
   },
   "custom/screenshare": {
     "exec": "pw-dump | jq -r 'map(.info?.props?) | map(select(.[\"media.name\"]? | test(\"webrtc-*\")?)) | map(.[\"stream.is-live\"]? == true | \"Live\") | .[]?'",
@@ -111,15 +122,15 @@
     "interval": 3
   },
   "pulseaudio": {
-      // "scroll-step": 1, // %, can be a float
-      "format": "{icon}",
-      "format-muted": "  ",
-      // "format-source": "{volume}% ",
-      // "format-source-muted": "",
-      "format-icons": {
-          "default": ["  ", "  ", "  "]
-      },
-      "on-click": "pavucontrol"
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon}",
+    "format-muted": "  ",
+    // "format-source": "{volume}% ",
+    // "format-source-muted": "",
+    "format-icons": {
+      "default": ["  ", "  ", "  "]
+    },
+    "on-click": "pavucontrol"
   },
   // "custom/notification": {
   //   "tooltip": false,

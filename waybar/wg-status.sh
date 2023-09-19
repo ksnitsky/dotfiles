@@ -8,7 +8,7 @@ fi
 interface="$1"
 
 if ip route | grep -q "dev $interface"; then
-    echo "{\"text\":\" 󰕥 \", \"tooltip\":\"$interface connected\"}"
+    echo "{\"alt\":\"connected\", \"tooltip\":\"$interface connected\"}"
 else
-    echo "{\"text\":\" 󰦞 \", \"tooltip\":\"$interface not connected\"}"
+    echo "{\"alt\":\"disconnected\", \"tooltip\":\"$interface not connected\"}"
 fi
