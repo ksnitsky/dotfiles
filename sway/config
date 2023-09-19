@@ -26,7 +26,8 @@ set $menu tofi-drun | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg /home/ks/Pictures/gosling.jpg fill
-output * bg /home/ks/.config/sway/wallpaper.jpg fill
+# output * bg /home/ks/.config/sway/wallpaper.jpg fill
+output * bg /home/ks/.config/sway/wallpaper-2.jpg fill
 #
 # Example configuration:
 #
