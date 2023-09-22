@@ -20,6 +20,9 @@ local opts = {
     -- Go
     b.formatting.goimports_reviser,
     b.formatting.golines,
+
+    -- global
+    b.formatting.trim_whitespace,
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then

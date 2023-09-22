@@ -75,6 +75,24 @@ local plugins = {
     ft = "slim",
   },
 
+  {
+    "vim-ruby/vim-ruby",
+    ft = { "rb", "rake" },
+  },
+
+  {
+    "HiPhish/nvim-ts-rainbow2",
+    lazy = false,
+  },
+
+  -- {
+  --   "andymass/vim-matchup",
+  --   config = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   end,
+  --   lazy = false,
+  -- },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
