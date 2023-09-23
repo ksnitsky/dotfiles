@@ -258,6 +258,7 @@ export EDITOR='nvim'
 export ASDF_DIR=${HOME}/.asdf
 export BROWSER_PATH=/usr/bin/brave-browser
 export MOZ_ENABLE_WAYLAND=1
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/
 
 # PATH
 
