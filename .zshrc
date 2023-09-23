@@ -327,6 +327,8 @@ source ~/.zsh/modules/git-omz-like-module.zsh
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 # opam configuration
 [[ ! -r /home/ks/.opam/opam-init/init.zsh ]] || source /home/ks/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 # export LANG=C
