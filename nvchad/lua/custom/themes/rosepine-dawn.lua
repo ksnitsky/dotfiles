@@ -6,8 +6,9 @@ local M = {}
 M.base_30 = {
   white = "#54555b",
   darker_black = "#efeff0",
-  black = "#fafafa", --  nvim bg
+  black = "#faf4ed", --  nvim bg
   black2 = "#EAEAEB",
+  -- black2 = "#54555b",
   one_bg = "#dadadb", -- real bg of onedark
   one_bg2 = "#d4d4d5",
   one_bg3 = "#cccccd",
@@ -38,7 +39,7 @@ M.base_30 = {
 
 M.base_16 = {
   base00 = "#faf4ed",
-  base01 = "#fffaf3",
+  base01 = "#f2e9de",
   base02 = "#f2e9de",
   base03 = "#9893a5",
   base04 = "#797593",
@@ -55,8 +56,8 @@ M.base_16 = {
   base0F = "#cecacd",
 }
 
-M = require("base46").override_theme(M, "rosepine-dawn")
-
 M.type = "light"
+
+M = require("base46").override_theme(M, "rosepine-dawn")
 
 return M
