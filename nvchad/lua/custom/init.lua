@@ -12,9 +12,10 @@ autocmd("InsertEnter", {
 })
 
 if vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
+  local path = vim.fn.fnameescape(vim.fn.argv()[1])
   autocmd("VimEnter", {
     pattern = "*",
-    command = "Telescope find_files",
+    command = "cd " .. path .. " | NvimTreeToggle",
   })
 end
 
