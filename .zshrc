@@ -315,8 +315,9 @@ alias rt='rails test'
 alias ru='rails runner'
 alias rdfl='rails db:fixtures:load'
 alias lg='lazygit'
-alias hx='helix'
-alias pgstart='doas systemctl start postgresql-15'
+alias nvim='LANG=C nvim'
+alias nv='nvim'
+# alias pgstart='doas systemctl start postgresql-15'
 
 source ~/.zsh/modules/git-omz-like-module.zsh
 
