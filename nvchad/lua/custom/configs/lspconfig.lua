@@ -8,11 +8,10 @@ local util = require "lspconfig/util"
 local servers = {
   "html",
   -- "cssls",
-  "tsserver",
+  -- "tsserver",
   "clangd",
   "solargraph",
-
-  -- "gopls"
+  "tailwindcss",
 }
 
 for _, lsp in ipairs(servers) do
@@ -56,5 +55,14 @@ lspconfig.ocamllsp.setup {
   capabilities = capabilities,
 }
 
---
--- lspconfig.pyright.setup { blabla}
+lspconfig.denols.setup {
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern "package.json",
+  single_file_support = false,
+}
