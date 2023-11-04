@@ -34,6 +34,11 @@ local plugins = {
   },
 
   {
+    "nkrkv/nvim-treesitter-rescript",
+    lazy = false,
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
@@ -83,6 +88,11 @@ local plugins = {
   {
     "HiPhish/nvim-ts-rainbow2",
     lazy = false,
+  },
+
+  {
+    "jlcrochet/vim-crystal",
+    ft = "crystal",
   },
 
   -- {

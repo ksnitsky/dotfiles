@@ -19,6 +19,28 @@ M.on_attach = function(client, bufnr)
   if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
+
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "always",
+        prefix = " ",
+        scope = "cursor",
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end,
+  })
+
+  vim.diagnostic.config {
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    -- float = { source = "always", border = "rounded" },
+  }
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()

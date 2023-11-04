@@ -11,7 +11,10 @@ local servers = {
   -- "tsserver",
   "clangd",
   "solargraph",
-  "tailwindcss",
+  "rescriptls"
+  -- "prettierd",
+  -- "eslint_d"
+  -- "tailwindcss",
 }
 
 for _, lsp in ipairs(servers) do
@@ -55,14 +58,26 @@ lspconfig.ocamllsp.setup {
   capabilities = capabilities,
 }
 
-lspconfig.denols.setup {
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-}
+-- lspconfig.denols.setup {
+--   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+--   on_attach = on_attach,
+--   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+-- }
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   root_dir = lspconfig.util.root_pattern "package.json",
   single_file_support = false,
+}
+
+lspconfig.crystalline.setup {
+  cmd = { "crystalline" },
+  filetypes = { "crystal" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.rescriptls.setup {
+  cmd = { 'rescript-lsp', '--stdio' },
+  filetypes = { "rescript", ".eml.re" }
 }

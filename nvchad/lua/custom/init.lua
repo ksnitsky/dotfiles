@@ -19,6 +19,21 @@ if vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
   })
 end
 
+autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = "rounded",
+      source = "always",
+      prefix = " ",
+      scope = "cursor",
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end,
+})
+
 -- autocmd("BufWritePre", {
 --   pattern = "*.go",
 --   callback = function()
@@ -41,3 +56,8 @@ end
 --     vim.lsp.buf.format({ async = false })
 --   end
 -- })
+
+autocmd("BufRead,BufNewFile", {
+  pattern = "*.slang",
+  command = "set filetype=slim",
+})
