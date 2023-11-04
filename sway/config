@@ -147,7 +147,19 @@ for_window {
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'End session?' -B 'Yes, exit sway' 'swaymsg exit'
     # TODO: https://sr.ht/~emersion/grim/ make a wofi select for a mode
     # bindsym $mod+Shift+e exec grim -g "$(slurp)" - | wl-copy && play /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
-    bindsym $mod+Shift+e exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG && play /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
+    # Extract next lines into a separate file
+    bindsym $mod+Shift+e \
+      exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && \
+      grim -g "$(slurp)" $IMG && \
+      wl-copy < $IMG && \
+      notify-send "Screenshot" "File saved as $IMG\nand copied to clipboard" -t 6000 -i $IMG
+      # try to add a Swappy on notification click
+    bindsym $mod+Ctrl+e \
+      exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && \
+      grim -o $(swaymsg -t get_workspaces | jq -r '.[] | select(.focused == true) | .output') $IMG && \
+      wl-copy < $IMG && \
+      notify-send "Screenshot" "File saved as $IMG\nand copied to clipboard" -t 6000 -i $IMG
+
 #
 # Moving around:
 #
