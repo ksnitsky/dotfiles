@@ -70,7 +70,7 @@ WORDCHARS=${WORDCHARS//[\/]}
 
 # Disable automatic widget re-binding on each precmd. This can be set when
 # zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+# ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # Customize the style that the suggestions are shown with.
 # See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
@@ -265,6 +265,7 @@ export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export FZF_DEFAULT_OPTS="
 	--color=fg:#908caa,bg:#191724,hl:#ebbcba
 	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
@@ -338,3 +339,5 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # if [[ ! $TERM =~ screen ]]; then
 #     exec tmux
 # fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
