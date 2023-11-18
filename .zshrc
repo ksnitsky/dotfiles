@@ -256,7 +256,8 @@ fi
 
 export EDITOR='nvim'
 export ASDF_DIR=${HOME}/.asdf
-export BROWSER_PATH=/usr/bin/brave-browser
+# export BROWSER_PATH=/usr/bin/brave-browser
+export BROWSER_PATH=/usr/bin/thorium-browser
 export MOZ_ENABLE_WAYLAND=1
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/
 
@@ -266,6 +267,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.config/v-analyzer/bin/
 export FZF_DEFAULT_OPTS="
 	--color=fg:#908caa,bg:#191724,hl:#ebbcba
 	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
@@ -318,6 +320,7 @@ alias rdfl='rails db:fixtures:load'
 alias lg='lazygit'
 alias nvim='LANG=C nvim'
 alias nv='nvim'
+alias tree='tree -I "node_modules"'
 # alias pgstart='doas systemctl start postgresql-15'
 
 source ~/.zsh/modules/git-omz-like-module.zsh
