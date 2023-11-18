@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "lua", "ruby", "ocaml" },
+  ensure_installed = { "lua", "ruby", "ocaml", "v" },
 
   highlight = {
     enable = true,

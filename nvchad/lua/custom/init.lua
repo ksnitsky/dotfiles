@@ -56,8 +56,3 @@ autocmd("CursorHold", {
 --     vim.lsp.buf.format({ async = false })
 --   end
 -- })
-
-autocmd("BufRead,BufNewFile", {
-  pattern = "*.slang",
-  command = "set filetype=slim",
-})

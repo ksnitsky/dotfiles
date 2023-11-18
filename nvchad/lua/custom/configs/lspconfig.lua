@@ -10,8 +10,9 @@ local servers = {
   -- "cssls",
   -- "tsserver",
   "clangd",
+  "vls",
+  -- "ruby_ls"
   "solargraph",
-  "rescriptls"
   -- "prettierd",
   -- "eslint_d"
   -- "tailwindcss",
@@ -78,6 +79,8 @@ lspconfig.crystalline.setup {
 }
 
 lspconfig.rescriptls.setup {
-  cmd = { 'rescript-lsp', '--stdio' },
-  filetypes = { "rescript", ".eml.re" }
+  cmd = { "rescript-language-server", "--stdio" },
+  filetypes = { "rescript", ".eml.re" },
 }
+
+lspconfig.vls.setup{}

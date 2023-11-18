@@ -46,8 +46,8 @@ M.mason = {
     "golines",
 
     -- work-stuff
-    "rubocop",
-    "solargraph",
+    -- "rubocop",
+    -- "solargraph",
   },
 }
 

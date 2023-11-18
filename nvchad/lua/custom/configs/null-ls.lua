@@ -25,10 +25,8 @@ local offense_to_diagnostic = function(offense)
 end
 
 local handle_ameba_output = function(params)
-  print(vim.inspect(params.output))
   if params.output and params.output.sources then
     local source = params.output.sources[1]
-    print(vim.inspect(source))
 
     if source and source.issues then
       local parser = h.diagnostics.from_json {
@@ -113,6 +111,14 @@ local opts = {
 
     -- global
     b.formatting.trim_whitespace,
+
+    -- sql
+    -- b.diagnostics.sqlfluff.with {
+    --   extra_args = { "--dialect", "postgres" },
+    -- },
+    -- b.formatting.sqlfluff.with {
+    --   extra_args = { "--dialect", "postgres" },
+    -- },
   },
 
   -- TODO: chatgpt answer to setup formatting only new lines
