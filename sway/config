@@ -28,8 +28,8 @@ set $gnome-interface org.gnome.desktop.interface
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg /home/ks/Pictures/gosling.jpg fill
 # output * bg /home/ks/.config/sway/wallpaper.jpg fill
-# output * bg /home/ks/.config/sway/wallpaper-2.jpg fill
-output * bg /home/ks/.config/sway/wallpaper-3.jpg fill
+output * bg /home/ks/.config/sway/wallpaper-2.jpg fill
+# output * bg /home/ks/.config/sway/wallpaper-3.jpg fill
 # output * bg /home/ks/.config/sway/wallpaper-4.png fill
 
 #
