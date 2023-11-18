@@ -1,0 +1,10 @@
+# [language-server.vls]
+# command = "v"
+#
+
+[[language]]
+name = "ocaml"
+auto-format = true
+
+# name = "v"
+# language-servers = [ "vls" ]
