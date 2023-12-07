@@ -19,8 +19,28 @@ if vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
   })
 end
 
+autocmd("BufRead", {
+  pattern = "*.templ",
+  command = "set filetype=templ",
+})
+
+autocmd("BufNewFile", {
+  pattern = "*.templ",
+  command = "set filetype=templ",
+})
+
+autocmd("BufRead", {
+  pattern = "*.{v,vsh,vv}",
+  command = "set filetype=v",
+})
+
+autocmd("BufNewFile", {
+  pattern = "*.{v,vsh,vv}",
+  command = "set filetype=v",
+})
+
 autocmd("CursorHold", {
-  buffer = bufnr,
+  -- buffer = bufnr,
   callback = function()
     local opts = {
       focusable = false,

@@ -93,6 +93,8 @@ local opts = {
       end,
     },
 
+    -- b.diagnostics.rubocop,
+
     -- Lua
     b.formatting.stylua,
 
@@ -100,8 +102,8 @@ local opts = {
     b.formatting.clang_format,
 
     -- Go
-    b.formatting.goimports_reviser,
-    b.formatting.golines,
+    -- b.formatting.goimports_reviser,
+    -- b.formatting.golines,
 
     -- Ocaml
     b.formatting.ocamlformat.with {
@@ -113,12 +115,7 @@ local opts = {
     b.formatting.trim_whitespace,
 
     -- sql
-    -- b.diagnostics.sqlfluff.with {
-    --   extra_args = { "--dialect", "postgres" },
-    -- },
-    -- b.formatting.sqlfluff.with {
-    --   extra_args = { "--dialect", "postgres" },
-    -- },
+    b.formatting.pg_format
   },
 
   -- TODO: chatgpt answer to setup formatting only new lines

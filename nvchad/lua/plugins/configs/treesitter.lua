@@ -15,10 +15,10 @@ local options = {
   --   -- options
   -- },
 
-  -- indent = {
-  --   enable = true,
-  --   disable = {},
-  -- },
+  indent = {
+    enable = false,
+    disable = {},
+  },
 }
 
 return options

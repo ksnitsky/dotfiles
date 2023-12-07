@@ -2,7 +2,7 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local util = require "lspconfig/util"
+-- local util = require "lspconfig/util"
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
@@ -10,39 +10,32 @@ local servers = {
   -- "cssls",
   -- "tsserver",
   "clangd",
-  "vls",
+  -- "vls",
   -- "ruby_ls"
-  "solargraph",
+  "rubocop",
   -- "prettierd",
   -- "eslint_d"
   -- "tailwindcss",
 }
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      completeUnimported = true,
-      usePlaceholders = true, -- maybe not needed
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-      gofumpt = true,
-    },
-  },
-}
+-- lspconfig.gopls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   cmd = { "gopls" },
+--   filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
+--   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+--   settings = {
+--     gopls = {
+--       completeUnimported = true,
+--       usePlaceholders = true, -- maybe not needed
+--       analyses = {
+--         unusedparams = true,
+--       },
+--       staticcheck = true,
+--       gofumpt = true,
+--     },
+--   },
+-- }
 
 lspconfig.ocamllsp.setup {
   cmd = { "ocamllsp" },
@@ -67,6 +60,7 @@ lspconfig.ocamllsp.setup {
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern "package.json",
   single_file_support = false,
 }
@@ -78,9 +72,24 @@ lspconfig.crystalline.setup {
   capabilities = capabilities,
 }
 
-lspconfig.rescriptls.setup {
-  cmd = { "rescript-language-server", "--stdio" },
-  filetypes = { "rescript", ".eml.re" },
+-- lspconfig.rescriptls.setup {
+--   cmd = { "rescript-language-server", "--stdio" },
+--   filetypes = { "rescript", ".eml.re" },
+-- }
+
+lspconfig.solargraph.setup {
+  settings = {
+    solargraph = {
+      diagnostics = false,
+    },
+  },
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
-lspconfig.vls.setup{}
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end

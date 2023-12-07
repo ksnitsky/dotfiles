@@ -38,7 +38,8 @@ M.on_attach = function(client, bufnr)
   vim.diagnostic.config {
     virtual_text = false,
     signs = true,
-    update_in_insert = true,
+    update_in_insert = false,
+    -- underline = true,
     -- float = { source = "always", border = "rounded" },
   }
 end

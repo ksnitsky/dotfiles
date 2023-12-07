@@ -8,6 +8,7 @@ M.general = {
     ["<leader>bbp"] = { "ibinding.pry<Esc>==f(a" },
     ["<leader>pr"] = { vim.lsp.buf.format, "Format document" },
     ["<leader>o"] = { "<cmd> only <CR>", "only focused split" },
+    ["gx"] = { '<cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>', "open link in browser" },
   },
   v = {
     [">"] = { ">gv", "indent" },
