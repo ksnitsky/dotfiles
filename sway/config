@@ -94,6 +94,7 @@ input "type:keyboard" {
 #
 for_window {
   [app_id=org.telegram.desktop] floating enable
+  [class="battle.net.exe"] floating enable
 
   # [shell="xwayland"] title_format "%title [XWayland]"
 
@@ -128,7 +129,7 @@ for_window {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym --to-code $mod+d exec $menu
 
     # Show local ip
     bindsym $mod+i exec dunstify "Local ip address:" $(hostname -I)
@@ -299,6 +300,7 @@ bar {
 # Gaps
 #
 gaps inner 5
+smart_gaps on
 
 #
 # Titlebar
