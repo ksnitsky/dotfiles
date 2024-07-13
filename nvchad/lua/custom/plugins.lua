@@ -94,6 +94,15 @@ local plugins = {
     "jlcrochet/vim-crystal",
     ft = "crystal",
   },
+
+  -- {
+  --   "andymass/vim-matchup",
+  --   -- setup = function()
+  --   --   -- may set any options here
+  --   --   vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   -- end,
+  --   lazy = false,
+  -- },
 }
 
 return plugins

@@ -68,32 +68,46 @@ local ameba_diagnostics = h.make_builtin {
   factory = h.generator_factory,
 }
 
+local gleam_formatting = h.make_builtin {
+  name = "gleam-fmt",
+  filetypes = { "gleam" },
+  method = null_ls.methods.FORMATTING,
+  generator_opts = {
+    command = "gleam",
+    args = { "format", "--stdin" },
+    -- args = { "--stdin", "json", "$FILENAME" },
+    -- format = "json",
+    to_stdin = true,
+  },
+  factory = h.formatter_factory,
+}
+
 local opts = {
   sources = {
     -- b.diagnostics.ameba,
     ameba_diagnostics,
+    gleam_formatting,
     -- webdev stuff
-    -- b.diagnostics.deno_lint, -- choosed deno for ts/js files cuz its very fast!
-    b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-    -- b.formatting.prettier,
-    --   .with {
-    --   condition = function(utils)
-    --     return utils.root_has_file "package.json" and utils.root_has_file ".prettierrc.yml"
-    --   end,
-    --   filetypes = { "html", "markdown", "css", "scss" },
-    -- }, -- so prettier works only on these filetypes
+    -- b.diagnostics.deno_lint,
+    b.formatting.deno_fmt.with {
+      filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact", "markdown" },
+    },
+    b.formatting.prettierd.with {
+      condition = function(utils)
+        return utils.root_has_file "package.json" and utils.root_has_file ".prettierrc.yml"
+      end,
+      filetypes = { "html", "markdown", "css", "scss" },
+    }, -- so prettier works only on these filetypes
     b.diagnostics.eslint_d.with {
       condition = function(utils)
         return utils.root_has_file "package.json"
       end,
     },
-    b.code_actions.eslint_d.with {
-      condition = function(utils)
-        return utils.root_has_file "package.json"
-      end,
-    },
-
-    -- b.diagnostics.rubocop,
+    -- b.code_actions.eslint_d.with {
+    --   condition = function(utils)
+    --     return utils.root_has_file "package.json"
+    --   end,
+    -- },
 
     -- Lua
     b.formatting.stylua,
@@ -102,8 +116,8 @@ local opts = {
     b.formatting.clang_format,
 
     -- Go
-    -- b.formatting.goimports_reviser,
-    -- b.formatting.golines,
+    b.formatting.goimports_reviser,
+    b.formatting.golines,
 
     -- Ocaml
     b.formatting.ocamlformat.with {
@@ -115,7 +129,7 @@ local opts = {
     b.formatting.trim_whitespace,
 
     -- sql
-    b.formatting.pg_format
+    b.formatting.pg_format,
   },
 
   -- TODO: chatgpt answer to setup formatting only new lines

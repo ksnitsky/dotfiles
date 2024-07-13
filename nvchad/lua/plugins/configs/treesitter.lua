@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "lua", "ruby", "ocaml", "v" },
+  ensure_installed = { "lua", "ruby" },
 
   highlight = {
     enable = true,
@@ -10,14 +10,9 @@ local options = {
   --   extended_mode = true,
   --   max_file_lines = nil,
   -- },
-  -- matchup = {
-  --   enable = true,
-  --   -- options
-  -- },
-
-  indent = {
-    enable = false,
-    disable = {},
+  matchup = {
+    enable = true,
+    -- enable_quotes = true,
   },
 }
 

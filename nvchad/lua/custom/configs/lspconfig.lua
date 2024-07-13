@@ -2,40 +2,44 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
--- local util = require "lspconfig/util"
+local util = require "lspconfig/util"
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
-  "html",
+  -- "html",
   -- "cssls",
   -- "tsserver",
   "clangd",
   -- "vls",
-  -- "ruby_ls"
+  "ruby_lsp",
   "rubocop",
+  "marksman",
+  "templ",
+  "emmet_language_server",
+  "gleam",
   -- "prettierd",
   -- "eslint_d"
   -- "tailwindcss",
 }
 
--- lspconfig.gopls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   cmd = { "gopls" },
---   filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
---   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
---   settings = {
---     gopls = {
---       completeUnimported = true,
---       usePlaceholders = true, -- maybe not needed
---       analyses = {
---         unusedparams = true,
---       },
---       staticcheck = true,
---       gofumpt = true,
---     },
---   },
--- }
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true, -- maybe not needed
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+}
 
 lspconfig.ocamllsp.setup {
   cmd = { "ocamllsp" },
@@ -51,6 +55,10 @@ lspconfig.ocamllsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+-- vim.g.markdown_fenced_languages = {
+--   "ts=typescript",
+-- }
 
 -- lspconfig.denols.setup {
 --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -77,14 +85,36 @@ lspconfig.crystalline.setup {
 --   filetypes = { "rescript", ".eml.re" },
 -- }
 
-lspconfig.solargraph.setup {
-  settings = {
-    solargraph = {
-      diagnostics = false,
-    },
+-- lspconfig.solargraph.setup {
+--   settings = {
+--     solargraph = {
+--       -- diagnostic = true,
+--       -- typecheck = true,
+--       diagnostics = false,
+--     },
+--   },
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
+
+lspconfig.elixirls.setup {
+  cmd = { "/home/ks/.local/share/nvim/mason/bin/elixir-ls" },
+}
+
+lspconfig.emmet_language_server.setup {
+  filetypes = {
+    "css",
+    "eruby",
+    "html",
+    "htmldjango",
+    "javascriptreact",
+    "less",
+    "pug",
+    "sass",
+    "scss",
+    "typescriptreact",
+    "templ",
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
 
 for _, lsp in ipairs(servers) do
