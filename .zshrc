@@ -258,8 +258,17 @@ export EDITOR='nvim'
 export ASDF_DIR=${HOME}/.asdf
 # export BROWSER_PATH=/usr/bin/brave-browser
 export BROWSER_PATH=/usr/bin/thorium-browser
-export MOZ_ENABLE_WAYLAND=1
+# export MOZ_ENABLE_WAYLAND=1
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/
+export DOTNET_ROOT=$HOME/.dotnet
+export DENO_INSTALL=$HOME/.deno
+export FLYCTL_INSTALL=$HOME/.fly
+export FZF_DEFAULT_OPTS="
+	--color=fg:#908caa,bg:#191724,hl:#ebbcba
+	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+	--color=border:#403d52,header:#31748f,gutter:#191724
+	--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 # PATH
 
@@ -268,21 +277,14 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.config/v-analyzer/bin/
-export FZF_DEFAULT_OPTS="
-	--color=fg:#908caa,bg:#191724,hl:#ebbcba
-	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
-	--color=border:#403d52,header:#31748f,gutter:#191724
-	--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
-	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
-
-# export PATH=$HOME/compiled/openssl/bin/:$PATH
-# export LD_LIBRARY_PATH=$HOME/compiled/openssl/lib
-# export LC_ALL="en_US.UTF-8"
-# export LDFLAGS="-L /home/ks/compiled/openssl/lib -WL,-rpath,/home/ks/compiled/openssl/lib"
+export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+export PATH=$PATH:$HOME/.cache/rebar3/bin
+export PATH=$PATH:$FLYCTL_INSTALL/bin
+export PATH=$PATH:$DENO_INSTALL/bin
 
 # Aliases
 
-# alias open='explorer.exe'
+alias open='nautilus'
 alias rc='rails console'
 alias rcs='rails console --sandbox'
 alias rd='rails destroy'
@@ -318,6 +320,8 @@ alias rt='rails test'
 alias ru='rails runner'
 alias rdfl='rails db:fixtures:load'
 alias lg='lazygit'
+alias ldckr='lazydocker'
+alias lzd='lazydocker'
 alias nvim='LANG=C nvim'
 alias nv='nvim'
 alias tree='tree -I "node_modules"'
@@ -332,6 +336,7 @@ source ~/.zsh/modules/git-omz-like-module.zsh
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export QT_QPA_PLATFORM=wayland
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
