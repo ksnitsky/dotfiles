@@ -18,7 +18,8 @@
     "custom/screenshare",
     "sway/language",
     "tray",
-    "custom/wireguard",
+    // "network",
+    // "custom/wireguard",
     "memory",
     "temperature",
     "cpu",
@@ -103,19 +104,19 @@
     "tooltip": false,
     "interval": 3
   },
-  "custom/wireguard": {
-    "exec": "~/.config/waybar/wg-status.sh fedora-pc",
-    // "exec-on-event": "on-click",
-    "format": "{icon}",
-    "return-type": "json",
-    "signal": 8,
-    "on-click": "~/.config/waybar/tofi-pass fedora-pc",
-    "interval": "once",
-    "format-icons": {
-      "connected": "󰕥",
-      "disconnected": "󰦞"
-    }
-  },
+  // "custom/wireguard": {
+  //   "exec": "~/.config/waybar/wg-status.sh new-fedora-pc",
+  //   // "exec-on-event": "on-click",
+  //   "format": "{icon}",
+  //   "return-type": "json",
+  //   "signal": 8,
+  //   "on-click": "~/.config/waybar/tofi-pass new-fedora-pc",
+  //   "interval": "once",
+  //   "format-icons": {
+  //     "connected": "󰕥",
+  //     "disconnected": "󰦞"
+  //   }
+  // },
   "custom/screenshare": {
     "exec": "pw-dump | jq -r 'map(.info?.props?) | map(select(.[\"media.name\"]? | test(\"webrtc-*\")?)) | map(.[\"stream.is-live\"]? == true | \"Live\") | .[]?'",
     "format": "{}",
