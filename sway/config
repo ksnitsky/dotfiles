@@ -102,15 +102,15 @@ for_window {
   [app_id=org.telegram.desktop] floating enable
   [class="battle.net.exe"] floating enable
   [app_id=org.gnome.Nautilus] floating enable
-  [instance=Godot_ProjectList] floating enable
-  [instance=Godot_Engine] floating enable
+  [class="obsidian"] floating enable
+  [class="Clockify"] floating enable
 
   # [shell="xwayland"] title_format "%title [XWayland]"
 
-  # [window_role="pop-up"] floating enable
-  # [window_role="bubble"] floating enable
-  # [window_role="dialog"] floating enable
-  # [window_type="dialog"] floating enable
+  [window_role="pop-up"] floating enable
+  [window_role="bubble"] floating enable
+  [window_role="dialog"] floating enable
+  [window_type="dialog"] floating enable
 
   # https://github.com/ValveSoftware/steam-for-linux/issues/1040
   [class="steam"] floating disable
