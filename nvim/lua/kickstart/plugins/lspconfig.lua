@@ -170,9 +170,20 @@ return {
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				require("lspconfig").gleam.setup({}),
-				require("lspconfig").ruby_lsp.setup({}),
+				ruby_lsp = {},
+
+				-- require("lspconfig").solargraph.setup({
+				-- 	init_options = {
+				-- 		formatting = false,
+				-- 	},
+				-- 	settings = {
+				-- 		diagnostics = false,
+				-- 	},
+				-- }),
+				-- require("lspconfig").rubocop.setup({}),
 				-- clangd = {},
 				gopls = {},
+        eslint = {},
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
