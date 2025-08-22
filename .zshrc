@@ -255,7 +255,6 @@ fi
 # Env variables
 
 export EDITOR='nvim'
-export ASDF_DIR=${HOME}/.asdf
 # export BROWSER_PATH=/usr/bin/brave-browser
 export BROWSER_PATH=/usr/bin/chromium-browser
 # export MOZ_ENABLE_WAYLAND=1
@@ -347,3 +346,5 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+source '/home/linuxbrew/.linuxbrew/opt/autoenv/activate.sh'
+eval "$(mise activate zsh)"
