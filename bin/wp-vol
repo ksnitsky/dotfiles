@@ -1,0 +1,29 @@
+#!/bin/bash
+
+send_notification() {
+	volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
+	volume=$(echo "( $volume * 100 ) / 1" | bc)
+	notify-send -u low -t 1000 -r 9993 -a "wp-vol" -h int:value:$volume "Volume: ${volume}%"
+}
+
+case $1 in
+up)
+	# Set the volume on (if it was muted)
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+
+	send_notification "$1"
+	;;
+down)
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-
+	send_notification "$1"
+	;;
+mute)
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+	if "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '/\[MUTED\]/ {print "true"; exit} END {if (!/\[MUTED\]/) print "false"}')"; then
+		notify-send -u low -t 1000 -r 9993 -a "wp-vol" "Muted"
+	else
+		send_notification up
+	fi
+	;;
+esac
