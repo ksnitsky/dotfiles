@@ -37,8 +37,9 @@ output * bg /home/ks/.config/sway/wallpaper.jpg fill
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
-output DP-2 pos 0 0 res 1920x1080@165.003Hz
-output DP-3 pos 1920 0 res 1920x1080@74.973Hz
+# output DP-2 pos 0 0 res 1920x1080@165.003Hz
+# output 'AOC 24P2W1G5 QKCM8HA012091' pos 1920 0 res 1920x1080@74.973Hz
+output 'AOC 24P2W1G5 QKCM8HA012091' pos 0 0 res 1920x1080@74.973Hz
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 exec_always {
@@ -46,7 +47,7 @@ exec_always {
 
   # Disable annoying middle click pasting
   # seems like it stop working
-  ! pgrep -x "wl-copy" > /dev/null && wl-paste --primary --watch wl-copy --primary --clear
+  # ! pgrep -x "wl-copy" > /dev/null && wl-paste --primary --watch wl-copy --primary --clear
 }
 
 ### Idle configuration
@@ -200,14 +201,10 @@ for_window {
     bindsym XF86AudioPlay exec playerctl play-pause
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
-    bindsym XF86AudioMute exec changevolume mute
+    bindsym XF86AudioMute exec wp-vol mute
 
-    # bindsym XF86AudioRaiseVolume exec dunstify -h int:value:"$(pamixer -i 10 --get-volume)" "Volume"
-    # bindsym XF86AudioLowerVolume exec dunstify -h int:value:"$(pamixer -d 10 --get-volume)" "Volume"
-    # bindsym XF86AudioRaiseVolume exec ~/.local/bin/changevolume up
-    # bindsym XF86AudioLowerVolume exec ~/.local/bin/changevolume down
-    bindsym XF86AudioRaiseVolume exec changevolume up
-    bindsym XF86AudioLowerVolume exec changevolume down
+    bindsym XF86AudioRaiseVolume exec wp-vol up
+    bindsym XF86AudioLowerVolume exec wp-vol down
 
 #
 # Workspaces:
