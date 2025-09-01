@@ -3,8 +3,8 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-	{
-		"slim-template/vim-slim",
-		ft = "slim",
-	},
+	-- {
+	-- 	"slim-template/vim-slim",
+	-- 	ft = "slim",
+	-- },
 }
