@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if [ $# -lt 1 ]; then
-    echo "Usage: $0 <directory_path>"
-    exit 1
-fi
+prefer_theme=$(gsettings get org.gnome.desktop.interface color-scheme)
 
-mode=$1
+if [[ "$prefer_theme" == *"prefer-dark"* ]]; then 
+    mode="light"
+else
+    mode="dark"
+fi
 
 script_dir="$HOME/.local/share/$mode-mode.d"
 
