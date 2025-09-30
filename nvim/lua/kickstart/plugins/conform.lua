@@ -25,6 +25,7 @@ return {
 			--  lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 			-- }
 			-- end,
+
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
@@ -46,8 +47,9 @@ return {
 				json = { "prettierd" },
 
 				go = { "golines", "goimports-reviser" },
+				erlang = { "erlfmt" },
 
-				eruby = { "erb_format" },
+				-- eruby = { "erb_format" },
 				sql = { "pg_format" },
 				-- ruby = { "rubocop" },
 			},
