@@ -322,6 +322,8 @@ alias lzd='lazydocker'
 alias nvim='LANG=C nvim'
 alias nv='nvim'
 alias tree='tree -I "node_modules"'
+alias icat='kitty icat'
+
 # alias pgstart='doas systemctl start postgresql-15'
 
 source ~/.zsh/modules/git-omz-like-module.zsh
