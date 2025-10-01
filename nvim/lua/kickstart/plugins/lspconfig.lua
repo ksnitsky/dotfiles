@@ -169,20 +169,12 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				require("lspconfig").gleam.setup({}),
-				require("lspconfig").ruby_lsp.setup({}),
+				-- gleam = {},
+				-- require("lspconfig").gleam.setup({}),
+				vim.lsp.config("gleam", {}),
+				-- require("lspconfig").ruby_lsp.setup({}),
 				-- ruby_lsp = {},
 
-				-- require("lspconfig").solargraph.setup({
-				-- 	init_options = {
-				-- 		formatting = false,
-				-- 	},
-				-- 	settings = {
-				-- 		diagnostics = false,
-				-- 	},
-				-- }),
-				-- require("lspconfig").rubocop.setup({}),
-				-- clangd = {},
 				gopls = {},
 				eslint = {},
 				-- pyright = {},
@@ -241,7 +233,8 @@ return {
 						-- by the server configuration above. Useful when disabling
 						-- certain features of an LSP (for example, turning off formatting for tsserver)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
+						-- require("lspconfig")[server_name].setup(server)
+						vim.lsp.config(server_name, server)
 					end,
 				},
 			})
