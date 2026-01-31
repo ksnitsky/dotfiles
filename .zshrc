@@ -10,16 +10,15 @@ source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export GOOGLE_CLOUD_PROJECT=AIzaSyAdObP0O2p7p-4VuVIkecVKikyEI4ATb9I
-export PATH=/home/ks/.cache/rebar3/bin:$PATH
+export PATH=${HOME}/.cache/rebar3/bin:$PATH
 
 alias nv=nvim
 alias lg=lazygit
-eval "$(/home/ks/.local/bin/mise activate zsh)"
+eval "$(${HOME}/.local/bin/mise activate zsh)"
 eval "$(zoxide init zsh)"
 
 # bun completions
-[ -s "/home/ks/.bun/_bun" ] && source "/home/ks/.bun/_bun"
+[ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
