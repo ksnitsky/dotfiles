@@ -37,13 +37,13 @@ return {
 				typescript = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
 				-- javascript = { "eslint_d" },
-				javascript = { "prettierd" },
+				-- javascript = { "prettierd" },
 
 				sass = { "prettierd" },
 				scss = { "prettierd" },
 				css = { "prettierd" },
 
-				markdown = { "deno_fmt" },
+				markdown = { "deno_fmt", "prettierd" },
 				json = { "prettierd" },
 
 				go = { "golines", "goimports-reviser" },
