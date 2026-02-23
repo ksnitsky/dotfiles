@@ -16,6 +16,18 @@ return {
       { "folke/neodev.nvim",       opts = {} },
     },
     config = function()
+      vim.lsp.set_log_level("warn")
+
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          local log = vim.lsp.get_log_path()
+          local size = vim.fn.getfsize(log)
+          if size > 10 * 1024 * 1024 then
+            vim.fn.system("tail -n 1000 " .. vim.fn.shellescape(log) .. " > /tmp/lsp_tail.log && mv /tmp/lsp_tail.log " .. vim.fn.shellescape(log))
+          end
+        end,
+      })
+
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -198,13 +210,13 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- ts_ls = {
-        -- 	settings = {
-        -- 		-- implicitProjectConfiguration = {
-        -- 		-- 	checkJs = true,
-        -- 		-- },
-        -- 	},
-        -- },
+        ts_ls = {
+          settings = {
+            -- implicitProjectConfiguration = {
+            -- 	checkJs = true,
+            -- },
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
