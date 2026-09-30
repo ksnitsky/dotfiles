@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [],
+  "mcp": {
+    "figma-mcp": {
+      "type": "remote",
+      "url": "https://mcp.figma.com/mcp",
+      "enabled": true
+    },
+    "flowbite-mcp": {
+      "type": "local",
+      "command": ["bunx", "flowbite-mcp"]
+    },
+    "penpot-mcp": {
+      "type": "remote",
+      "url": "http://localhost:4401/mcp",
+      "enabled": true
+    },
+    "rutin-mcp": {
+      "type": "remote",
+      "url": "http://localhost:4000/mcp",
+      "headers": {
+        "Authorization": "Bearer rutin_2dbe556e408624441db8410771709f18b0bee2a2450ee9e1a29eaf1d165bab2d"
+      },
+      "enabled": true
+    }
+  }
+}
