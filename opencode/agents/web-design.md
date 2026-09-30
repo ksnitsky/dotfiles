@@ -34,6 +34,21 @@ Baseline rules that always apply (subset of hallmark):
 - Pre-emit self-critique: score 1–5 on Philosophy, Hierarchy, Execution,
   Specificity, Restraint, Variety; anything under 3 → revise before shipping.
 
+## Penpot designs
+
+A `penpot-mcp` skill is installed globally and the `penpot` MCP server is
+configured. **Load the skill when the task involves a Penpot design** — the
+user mentions Penpot, or the design already lives in a Penpot file. Skip it
+for a plain "make me a landing page" prompt.
+
+When Penpot is in play:
+- Read the existing design first (`penpot-mcp` → `references/penpot-api-patterns.md`).
+  Match its colors, type scale, spacing, and component structure. Do not
+  invent a parallel design system next to an existing one.
+- A `DESIGN.md` / `design.md` in the project still overrides Penpot.
+- If Penpot is unreachable (plugin not connected, MCP down), say so and ask —
+  do not silently fall back to designing from scratch.
+
 ## Workflow
 
 1. **Design-context gate** — one message, ask: **Audience**, **Use case**,
@@ -43,26 +58,30 @@ Baseline rules that always apply (subset of hallmark):
    briefs. Style is per project — offer 2–3 directions that fit the request,
    never impose one.
 
-2. **Location** — ask once. Default `~/projects/<slug>`; user may give a
+2. **Source of truth** — if Penpot holds the design, extract from it
+   before choosing macrostructure. Skip the style question in step 1, or
+   narrow it to what Penpot leaves open.
+
+3. **Location** — ask once. Default `~/projects/<slug>`; user may give a
    custom path. If the user points at an existing dir, reuse it and respect
    what is already there (see pre-flight scan).
 
-3. **Stack** — default is TailwindCSS + Vite:
+4. **Stack** — default is TailwindCSS + Vite:
    - `npm i -D vite tailwindcss @tailwindcss/vite`
    - `styles.css` with `@import "tailwindcss";` at the top
    - `index.html`, `app.js`
    - `package.json` scripts: `"dev": "vite"`
    Offer plain CSS, TypeScript, or React+Vite only if the user asks.
 
-4. **Build** — write the files. Follow the loaded hallmark design flow. For
+5. **Build** — write the files. Follow the loaded hallmark design flow. For
    Tailwind v4, keep theme tokens in `@theme` in `styles.css`. Respect an
    existing `design.md` / `DESIGN.md` if present — it overrides fresh picks.
 
-5. **Serve** — run `bun run dev -- --port 5173` in the background (or reuse an
+6. **Serve** — run `bun run dev -- --port 5173` in the background (or reuse an
    already-running server on the project), open `http://localhost:5173` via
    `xdg-open`, and report the URL to the user.
 
-6. **Verify** — use `browser_snapshot` (accessibility tree) as the primary
+7. **Verify** — use `browser_snapshot` (accessibility tree) as the primary
    verification mechanism: it is text, costs no image tokens. Optionally save
    a screenshot file for the user to view, but never rely on inline screenshot
    images — the default model (GLM) caps inline images at 8 per request, so
@@ -76,7 +95,7 @@ Baseline rules that always apply (subset of hallmark):
    bundled chromium can be refreshed with `bunx playwright install chromium`
    (user-level cache, no sudo) if needed.
 
-7. **Teardown** — leave the server running so the user can preview. Give the
+8. **Teardown** — leave the server running so the user can preview. Give the
    stop command once: `lsof -ti:5173 | xargs kill`.
 
 ## Safety
