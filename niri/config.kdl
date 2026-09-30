@@ -146,6 +146,7 @@ environment {
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     XDG_SESSION_TYPE "wayland"
     XDG_CURRENT_DESKTOP "niri"
+    OPENCODE_ENABLE_EXA "1"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -301,6 +302,7 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 
 spawn-sh-at-startup "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=launch-script.sh --file-forwarding app.zen_browser.zen"
 spawn-at-startup "kitty"
+spawn-at-startup "lxqt-policykit-agent"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -362,6 +364,18 @@ window-rule {
 window-rule {
     match app-id=r#"^org.telegram.desktop$"# title="^Media viewer$"
     open-floating true
+}
+
+window-rule {
+    match app-id=r#"^AmneziaVPN$"#
+    open-floating true
+    open-focused true
+}
+
+window-rule {
+    match app-id=r#"^lxqt-policykit-agent$"#
+    open-floating true
+    open-focused true
 }
 
 window-rule {
