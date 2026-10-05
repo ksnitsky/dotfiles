@@ -11,9 +11,11 @@ source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH=${HOME}/.cache/rebar3/bin:$PATH
+export EDITOR=nvim
 
 alias nv=nvim
 alias lg=lazygit
+
 eval "$(${HOME}/.local/bin/mise activate zsh)"
 eval "$(zoxide init zsh)"
 
@@ -24,3 +26,6 @@ eval "$(zoxide init zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 unsetopt correct_all
+
+# Added by codebase-memory-mcp install
+export PATH="/home/ks/.local/bin:$PATH"
