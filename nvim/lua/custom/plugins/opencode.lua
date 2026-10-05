@@ -1,10 +1,34 @@
+-- return {}
 return {
 	"nickjvandyke/opencode.nvim",
+	version = "*",
 	dependencies = {
-		-- Recommended for `ask()` and `select()`.
-		-- Required for `snacks` provider.
-		---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-		{ "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+		{
+			-- Recommended for `ask()` and `select()`.
+			-- Required for `snacks` provider.
+			---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+			"folke/snacks.nvim",
+			opts = {
+				input = {
+				},
+				picker = {
+					actions = {
+						opencode_send = function(...)
+							return require("opencode")
+									.snacks_picker_send(...)
+						end,
+					}
+				},
+				terminal = {},
+				win = {
+					input = {
+						keys = {
+							["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+						},
+					}
+				}
+			}
+		},
 	},
 	config = function()
 		---@type opencode.Opts
@@ -16,17 +40,6 @@ return {
 		-- vim.o.autoread = true
 
 		-- Recommended/example keymaps.
-		-- vim.keymap.set({ "n", "x" }, "<leader>a", function() require("opencode").ask("@this: ", { submit = true }) end,
-		-- 	{ desc = "Ask opencode…" })
-		-- vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,
-		-- 	{ desc = "Execute opencode action…" })
-		-- vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
-		--
-		vim.keymap.set({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
-			{ desc = "Add range to opencode", expr = true })
-		vim.keymap.set("n", "goo", function() return require("opencode").operator("@this ") .. "_" end,
-			{ desc = "Add line to opencode", expr = true })
-		--
 		-- vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
 		-- 	{ desc = "Scroll opencode up" })
 		-- vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
@@ -40,11 +53,13 @@ return {
 	keys = {
 		{ "<leader>a",  nil,                                                                  desc = "Opencode" },
 		{ "<leader>ac", function() require("opencode").toggle() end,                          desc = "Toggle Opencode" },
+		-- { "<leader>" }
 		-- { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
 		-- { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
 		-- { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
 		-- { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-		{ "<leader>ab", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode..." },
+		{ "<leader>aa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode..." },
+		-- { "<leader>ab", function() require("opencode").ask("@buffer: ", { submit = true }) end, desc = "Send current buffer..." },
 		{ "<leader>ax", function() require("opencode").select() end,                          desc = "Execute opencode action..." },
 		{ "<leader>as", function() return require("opencode").operator("@this ") end,         mode = "v",                         desc = "Add range to opencode", expr = true },
 		{ "<leader>al", function() return require("opencode").operator("@this ") .. "_" end,  mode = "v",                         desc = "Add line to opencode",  expr = true },

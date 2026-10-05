@@ -18,6 +18,8 @@ return {
 				"vimdoc",
 				"ruby",
 				"rescript",
+				"gitcommit",
+				"git_rebase",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
