@@ -4,36 +4,67 @@
         "./plugins/caveman/plugin.js"
     ],
     "mcp": {
-        "figma-mcp": {
-            "type": "remote",
-            "url": "https://mcp.figma.com/mcp",
-            "enabled": true
-        },
-        "flowbite-mcp": {
-            "type": "local",
-            "command": [
-                "bunx",
-                "flowbite-mcp"
-            ]
-        },
-        "playwright": {
-            "type": "local",
-            "command": [
-                "bunx",
-                "@playwright/mcp@latest",
-                "--executable-path",
-                "/usr/bin/chromium",
-                "--headless",
-                "--no-sandbox",
-                "--isolated",
-                "--image-responses",
-                "omit"
-            ]
-        },
-        "penpot": {
-            "type": "remote",
-            "url": "https://design.penpot.app/mcp/stream?userToken=eyJhbGciOiJBMjU2S1ciLCJlbmMiOiJBMjU2R0NNIn0.fS4GS-ynBjiYhh8HLP36VqOaXv2eNzJy12eI42QT2wbmqoZPdCVrAQ.xVg0DasA6hUlre6B.Vo2O5j0L7fAEX1n7cnidb2XP03ApUzRQfH0_PfkahaodxxCcrJ3UuwNLIc_w8CbUA2BOpP0bTiMEzrfQgaxhTnJOmvwrWs6uC6q-d7CcK4BPYft1KOVo5eJweE4jYo8dRLeb0GnWVTX5MQWzOFOxggmMt8Eh2BBior1G7gY8r58aiwsEGGs1w4ATFkITKeUCOYWuFu0GZ_OgyAoxj4IcfbI.Qf_y-sR_upKARGhpRIMsmQ",
-            "enabled": true
+        "servers": {
+            "figma-mcp": {
+                "type": "remote",
+                "url": "https://mcp.figma.com/mcp"
+            },
+            "flowbite-mcp": {
+                "type": "local",
+                "command": [
+                    "bunx",
+                    "flowbite-mcp"
+                ]
+            },
+            "playwright": {
+                "type": "local",
+                "command": [
+                    "bunx",
+                    "@playwright/mcp",
+                    "--executable-path",
+                    "/usr/bin/chromium",
+                    "--no-sandbox",
+                    "--isolated",
+                    "--image-responses",
+                    "omit",
+                    "--output-dir",
+                    "/home/ks/.cache/opencode/playwright-output",
+                    "--idle-timeout",
+                    "900000"
+                ],
+                "environment": {
+                    "DISPLAY": ":1",
+                    "WAYLAND_DISPLAY": "wayland-1",
+                    "XDG_RUNTIME_DIR": "/run/user/1000"
+                }
+            },
+            "playwright-headless": {
+                "type": "local",
+                "command": [
+                    "bunx",
+                    "@playwright/mcp",
+                    "--executable-path",
+                    "/usr/bin/chromium",
+                    "--headless",
+                    "--no-sandbox",
+                    "--isolated",
+                    "--image-responses",
+                    "omit",
+                    "--output-dir",
+                    "/home/ks/.cache/opencode/playwright-output",
+                    "--idle-timeout",
+                    "900000"
+                ],
+                "environment": {
+                    "DISPLAY": ":1",
+                    "WAYLAND_DISPLAY": "wayland-1",
+                    "XDG_RUNTIME_DIR": "/run/user/1000"
+                }
+            },
+            "penpot": {
+                "type": "remote",
+                "url": "https://design.penpot.app/mcp/stream?userToken=eyJhbGciOiJBMjU2S1ciLCJlbmMiOiJBMjU2R0NNIn0.fS4GS-ynBjiYhh8HLP36VqOaXv2eNzJy12eI42QT2wbmqoZPdCVrAQ.xVg0DasA6hUlre6B.Vo2O5j0L7fAEX1n7cnidb2XP03ApUzRQfH0_PfkahaodxxCcrJ3UuwNLIc_w8CbUA2BOpP0bTiMEzrfQgaxhTnJOmvwrWs6uC6q-d7CcK4BPYft1KOVo5eJweE4jYo8dRLeb0GnWVTX5MQWzOFOxggmMt8Eh2BBior1G7gY8r58aiwsEGGs1w4ATFkITKeUCOYWuFu0GZ_OgyAoxj4IcfbI.Qf_y-sR_upKARGhpRIMsmQ"
+            }
         }
     }
 }
