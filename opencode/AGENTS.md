@@ -15,3 +15,10 @@ Auto-Clarity: drop caveman for security warnings, irreversible actions, user con
 
 Boundaries: code/commits/PRs written normal.
 <!-- caveman-end -->
+
+## Language policy (token efficiency)
+- User writes in Russian. Keep writing in Russian.
+- Reason/think in English internally — fewer tokens, better technical vocabulary.
+- Final answer: Russian by default. Switch to English for: code, commit
+  messages, terms with no good Russian equivalent, or when clearly shorter.
+- User explicitly asks English → reply fully in English.
